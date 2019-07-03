@@ -7,6 +7,10 @@ import {
 } from 'react-router-dom';
 import firebase from 'firebase/app';
 
+import NewScat from '../components/NewScat/NewScat';
+import SingleScat from '../components/SingleScat/SingleScat';
+import EditScat from '../components/EditScat/EditScat';
+
 import MyNavBar from '../components/MyNavBar/MyNavBar';
 import Home from '../components/Home/Home';
 import Auth from '../components/Auth/Auth';
@@ -68,6 +72,9 @@ class App extends React.Component {
                 <Switch>
                   <PublicRoute path='/auth' component={Auth} authed={authed} />
                   <PrivateRoute path='/home' component={Home} authed={authed} />
+                  <PrivateRoute path='/new' component={NewScat} authed={authed} />
+                  <PrivateRoute path='/edit/:id' component={EditScat} authed={authed} />
+                  <PrivateRoute path='/scat/:id' component={SingleScat} authed={authed} />
                   <Redirect from="*" to="/auth" />
                 </Switch>
               </div>
