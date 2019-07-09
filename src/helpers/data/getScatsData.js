@@ -1,0 +1,22 @@
+import axios from 'axios';
+import apiKeys from '../apiKeys.json';
+
+const firebaseUrl = apiKeys.firebaseKeys.databaseURL;
+
+
+const getScatsData = uid => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/scats.json?orderBy="uid"&equalTo="${uid}"`)
+    .then((res) => {
+      const scats = [];
+      if (res.data !== null) {
+        Object.keys(res.data).forEach((fbKey) => {
+          res.data[fbKey].id = fbKey;
+          scats.push(res.data[fbKey]);
+        });
+      }
+      resolve(scats);
+    })
+    .catch(err => reject(err));
+});
+
+export default { getScatsData };

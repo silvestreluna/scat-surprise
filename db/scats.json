@@ -1,0 +1,46 @@
+{ 
+  "scats" : {
+    "scats1": {
+      "location": "NSS", 
+      "weight": "12g", 
+      "color": "brown", 
+      "sampleName": "Toxic Sample #1", 
+      "animal": "Dog", 
+      "uid": "UuwiBrgnSHPqWFoeNBMDzuyO7Z52"
+    },
+    "scats2": {
+      "location": "Nashville", 
+      "weight": "10g", 
+      "color": "green", 
+      "sampleName": "Toxic Sample #2", 
+      "animal": "Unknown", 
+      "uid": "UuwiBrgnSHPqWFoeNBMDzuyO7Z52"
+    },
+    "scats3": {
+      "location": "DownTown", 
+      "weight": "1g", 
+      "color": "black", 
+      "sampleName": "Toxic Sample #3", 
+      "animal": "None", 
+      "uid": "UuwiBrgnSHPqWFoeNBMDzuyO7Z52"
+    },
+    "scats4": {
+      "location": "House", 
+      "weight": "5g", 
+      "color": "brown", 
+      "sampleName": "Toxic Sample #4", 
+      "animal": "Unknown", 
+      "uid": "1"
+    },
+    "scats5": {
+      "location": "Somewhere", 
+      "weight": "11g", 
+      "color": "red", 
+      "sampleName": "Toxic Sample #5", 
+      "animal": "Bug", 
+      "uid": "2"
+    }
+  }
+}
+
+
