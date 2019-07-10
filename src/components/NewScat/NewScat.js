@@ -1,4 +1,7 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import scatData from '../../helpers/data/getScatsData';
 
 import './NewScat.scss';
 
@@ -32,6 +35,14 @@ class NewScat extends React.Component {
 
   animalChange = e => this.formFieldStringState('animal', e);
 
+  formSubmit = (e) => {
+    e.preventDefault();
+    const saveMe = { ...this.state.newScat };
+    saveMe.uid = firebase.auth().currentUser.uid;
+    scatData.postScat(saveMe)
+      .then(() => this.props.history.push('/home'))
+      .catch(err => console.error(err, 'Nothing to post'));
+  }
 
   render() {
     const { newScat } = this.state;
@@ -39,66 +50,66 @@ class NewScat extends React.Component {
       <div className="NewScat">
         <h1>NewScat</h1>
 
-        <form>
+        <form onSubmit={this.formSubmit}>
           <div className="form-group">
             <label htmlFor="sampleName">Sample Name</label>
             <input
-            type="email"
+            type="text"
             className="form-control"
             id="sampleName"
             placeholder="Sample 12"
             value={ newScat.sampleName}
             onChange={this.sampleNameChange}
-            />
+            required/>
           </div>
           <div className="form-group">
             <label htmlFor="color">Color</label>
             <input
-            type="email"
+            type="text"
             className="form-control"
             id="color"
             placeholder="Brown"
             value={ newScat.color}
             onChange={this.colorChange}
-            />
+            required/>
           </div>
 
           <div className="form-group">
             <label htmlFor="weight">Weight</label>
             <input
-            type="email"
+            type="text"
             className="form-control"
             id="weight"
             placeholder="Weight"
             value={ newScat.weight}
             onChange={this.weightChange}
-            />
+            required/>
           </div>
 
           <div className="form-group">
             <label htmlFor="location">Location</label>
             <input
-            type="email"
+            type="text"
             className="form-control"
             id="location"
             placeholder="Location"
             value={ newScat.location}
             onChange={this.locationChange}
-            />
+            required/>
           </div>
 
           <div className="form-group">
             <label htmlFor="animal">Animal</label>
             <input
-            type="email"
+            type="text"
             className="form-control"
             id="animal"
             placeholder="Animal"
             value={ newScat.animal}
             onChange={this.animalChange}
-            />
+            required/>
           </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary">Save Scat</button>
         </form>
       </div>
     );
